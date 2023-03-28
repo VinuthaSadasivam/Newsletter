@@ -5,11 +5,11 @@ const bodyParser = require("body-parser");
 const https = require("https");
 require("dotenv").config();
 
-const MAPI_KEY = process.env.API_KEY;
+const MAPI_KEY = process.env.API_KEY
 
-const MLIST_ID = process.env.LIST_ID;
+const MLIST_ID = process.env.LIST_ID
 
-const MAPI_SERVER = process.env.API_SERVER;
+const MAPI_SERVER = process.env.API_SERVER
 
 
 port.use(express.static("public"));
