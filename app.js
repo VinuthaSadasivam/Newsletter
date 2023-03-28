@@ -3,6 +3,13 @@ const port = express();
 const request = require("request");
 const bodyParser = require("body-parser");
 const https = require("https");
+require("dotenv").config();
+
+const MAPI_KEY = process.env.API_KEY;
+
+const MLIST_ID = process.env.LIST_ID;
+
+const MAPI_SERVER = process.env.API_SERVER;
 
 
 port.use(express.static("public"));
@@ -34,10 +41,10 @@ var data = {
 
 
 const jsonData = JSON.stringify(data);
-const url = "https://us21.api.mailchimp.com/3.0/lists/de9531e5c0";
+const url = "https://" + MAPI_SERVER + ".api.mailchimp.com/3.0/lists/" + MLIST_ID;
 const options = {
 method: "POST",
-auth: "vinutha:d305917c3f0d82116256efd79bff47e9-us21"
+auth: "vinutha:MAPI_KEY"
 };
 
 const request = https.request(url, options, function(response){
