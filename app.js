@@ -5,11 +5,9 @@ const bodyParser = require("body-parser");
 const https = require("https");
 require("dotenv").config();
 
-const MAPI_KEY = process.env.API_KEY
-
-const MLIST_ID = process.env.LIST_ID
-
-const MAPI_SERVER = process.env.API_SERVER
+const API_K = process.env.API_KEY;
+const AUDIENCE_I = process.env.AUDIENCE_ID;
+const SERVER_I = process.env.SERVER_ID;
 
 
 port.use(express.static("public"));
@@ -41,10 +39,10 @@ var data = {
 
 
 const jsonData = JSON.stringify(data);
-const url = "https://" + MAPI_SERVER + ".api.mailchimp.com/3.0/lists/" + MLIST_ID;
+const url = "https://" + SERVER_I + ".api.mailchimp.com/3.0/lists/" + AUDIENCE_I;
 const options = {
 method: "POST",
-auth: "vinutha:MAPI_KEY"
+auth: "vinutha:API_K"
 };
 
 const request = https.request(url, options, function(response){
@@ -68,6 +66,6 @@ port.post("/failure", function(req, res){
    res.redirect("/");
 })
 
-port.listen(3000, function(req, res){
+port.listen(process.env.PORT || 3000, function(req, res){
     console.log("the server is running");
 });
